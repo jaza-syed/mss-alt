@@ -10,7 +10,7 @@ To create the environment and install dependencies for development
 ``` sh
 export PIXI_FROZEN=true
 pixi install
-pixi shell  # shell to run pixi in
+pixi shell -e dev # shell to run pixi in
 pre-commit install  # install pre-commit hooks
 ```
 We recommend having `PIXI_FROZEN=true` set by default so that the environment
