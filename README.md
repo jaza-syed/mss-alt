@@ -35,7 +35,7 @@ Before running experimental scripts, use the environment variables
 
 To run the experiments from our paper, run the following command in the project root directory
 ```
-pixi run python expt/01-ss/ss.py
+pixi run -e cuda python expt/01-ss/ss.py
 ```
 Then the run the notebooks `long.pynb` and `short.ipynb` in the directory `expt/01-ss` .
 
