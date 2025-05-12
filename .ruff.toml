@@ -1,0 +1,12 @@
+line-length = 90
+target-version = "py39"
+
+exclude = ["alt-eval", "faster-whisper", "notebooks", "expt/02-short", "expt/04-long"]
+
+[format]
+indent-style = "space"
+quote-style = "double"
+
+[lint]
+unfixable = ["F401"]
+ignore = ["F401"]
