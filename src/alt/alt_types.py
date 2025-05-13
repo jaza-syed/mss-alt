@@ -66,7 +66,7 @@ class MusdbAltConfig:
     musdb_dir: Path = field(
         metadata=config(encoder=str, decoder=Path),
     )
-    revision: str = "0.2.0"
+    revision: str = "v1.0.0"
 
 
 @dataclass_json

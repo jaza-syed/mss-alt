@@ -51,7 +51,7 @@ def extract_jam_alt(cfg: JamAltConfig) -> dict[str, SongInfo]:
     logger.info("Extracting jam-alt dataset")
     logger.info("Loading jam-alt from huggingface datasets")
     dataset = load_dataset(
-        "jazasyed/jam-alt", revision=cfg.revision, trust_remote_code=True
+        "audioshake/jam-alt", revision=cfg.revision, trust_remote_code=True
     )["test"]  # type: ignore
     logger.info("Loaded jam-alt")
     # Iterate over dataset

@@ -25,9 +25,7 @@ def prepare(cpu: bool = False, force: bool = False):
         "mdx",
         "mdx_extra",
     ]
-    jam_alt_cfg = JamAltConfig(
-        revision="v1.4.0", languages=["en", "fr", "de", "es"]
-    )
+    jam_alt_cfg = JamAltConfig(revision="v1.4.0", languages=["en", "fr", "de", "es"])
     musdb_alt_cfg = MusdbAltConfig(revision="v1.0.0", musdb_dir=Path("musdb18hq"))
     extract = ExtractConfig(jam_alt=jam_alt_cfg, musdb_alt=musdb_alt_cfg)
     run_extract_named("01-extract", cfg=extract, force=force)
