@@ -1,7 +1,7 @@
 # Source Separation for Lyrics Transcription
 This is the repo assosciated with the [paper](https://arxiv.org/pdf/2506.15514) "Exploiting Music Source Separation for 
 Automatic Lyrics Transcription with Whisper" published at the ICME 2025 workshop "Artificial Intelligence for Music"
-(https://ai4musicians.org/2025icme.html)
+(https://ai4musicians.org/2025icme.html). The repo provides the code to generate all tables and figures from the paper.
 
 ## Setup
 This repo uses [pixi](https://pixi.sh/latest/) for environment and python
