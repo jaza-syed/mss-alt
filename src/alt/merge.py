@@ -49,6 +49,7 @@ def merge_lines(
 
     Note that the resulting segments may have overlaps in time due to the padding,
     however this padding does not extend into the vocal activity of the next segment.
+    This function is adapted from an inital implementation by Ondrej Cifka.
 
     Args:
         lines (list[dict]): A list of dictionaries, each containing 'start', 'end', and 'text' keys.
