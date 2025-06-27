@@ -1,0 +1,38 @@
+# MacOS
+.DS_Store
+
+# python
+*.pyc
+__pycache__/
+
+# pixi
+.pixi/
+*.egg-info
+
+# ruff
+.ruff-cache
+
+# qsub output files
+*.o[0-9][0-9][0-9][0-9][0-9][0-9][0-9]
+*.e[0-9][0-9][0-9][0-9][0-9][0-9][0-9]
+.last_job
+
+# process output directory
+/build
+/expt/build
+outputs/
+wandb/
+cache/
+artifacts/
+
+# local env variables
+.envrc
+
+# personal files
+tmp/
+share/
+render/
+tensorboard/
+run.sh
+lightning_logs/
+.vscode/

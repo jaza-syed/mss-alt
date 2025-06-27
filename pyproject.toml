@@ -1,0 +1,84 @@
+[project]
+name = "alt"
+version = "0.0.1"
+description = "ALT Research Repo"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+authors = [{ name = "Jaza Syed", email = "j.syed@qmul.ac.uk" }]
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge", "nvidia"]
+platforms = ["linux-64", "osx-arm64"]
+
+# ────────────────────────────────────────────────────────────────────────────────
+# Core Conda-level runtime deps
+[tool.pixi.dependencies]
+# pytorch 2.7 does not support ffmpeg 7
+ffmpeg = "<7"
+
+# Core PyPI-level runtime deps
+[tool.pixi.pypi-dependencies]
+alt = { path = ".", editable = true }
+faster-whisper = { git = "https://github.com/systran/faster-whisper.git", rev = "97a4785" }
+dali_dataset = { git = "https://github.com/gabolsgabs/dali.git", branch = "version2", subdirectory = "code" }
+demucs = { git = "https://github.com/facebookresearch/demucs.git", tag = "v4.0.1" }                           # v4.0.1 
+# espnet = "==202412"
+# espnet_model_zoo = "*"
+jiwer = ">=3.0.3"
+python-iso639 = ">=2023.6.15"
+regex = ">=2023.8.8"
+sacremoses = "==0.0.53"
+# for owsm?
+transformers = { version = "<5" }
+onnxruntime = "*"
+torch = ">=2.7,<3"
+torcheval = "*"
+openai-whisper = { git = "https://github.com/openai/whisper.git", rev = "v20240930" }
+# uncomment then update / install
+# flash-attn = ">=2,<3" # -- to install you have to comment out, pixi install, uncomment, pixi install
+datasets = "*"
+soundfile = "<0.14"
+librosa = "*"
+numpy = "*"
+matplotlib = "*"
+tqdm = "*"
+seaborn = "*"
+ipykernel = ">=6.29.5,<7"
+ipywidgets = "*"
+msgpack = "==1.0.6"       # a dependency of librosa that has not been declared.
+hydra-core = "*"
+wandb = "*"
+lightning = {version="*", extras=["extra"]}
+tensorboard = "*"
+pydantic = "*"
+
+[tool.pixi.pypi-options]
+# so that torch is already available when trying to install flash-attn
+no-build-isolation = ["flash-attn"]
+
+# ────────────────────────────────────────────────────────────────────────────────
+# Build wheel target
+[tool.hatch.build.targets.wheel]
+packages = ["src/alt"]
+
+# ────────────────────────────────────────────────────────────────────────────────
+# Features
+[tool.pixi.feature.dev]
+platforms = ["linux-64", "osx-arm64"]
+pypi-dependencies = { ruff = "*", pre-commit = "*", ipython = "*", pytest = "*" }
+
+# Ensure CUDA available on linux
+[tool.pixi.feature.cuda]
+platforms = ["linux-64"]
+system-requirements = { cuda = "12" }
+dependencies = { cudnn = "9.7.*" }
+
+# Tie features into environments
+[tool.pixi.environments]
+dev = ["dev"]
+cuda = ["cuda"]
+dev-cuda = ["dev", "cuda"]

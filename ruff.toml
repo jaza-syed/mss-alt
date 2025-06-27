@@ -1,0 +1,13 @@
+line-length = 90
+target-version = "py39"
+
+exclude = []
+
+[format]
+indent-style = "space"
+quote-style = "double"
+
+[lint]
+select = ["F"]
+unfixable = ["F401"]
+ignore = ["F401"]
