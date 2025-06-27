@@ -37,8 +37,8 @@ See the experimental [README](./expt/01-ss/README.md) for details on how to run 
 
 
 ## Structure
-The repo contains a python module `alt` in `src/alt` which provides functions
-used to run ALT evaluation pipelines. The pipelines are divided into four stages
+The repo contains a python module `alt` in `src/alt` which provides all the experimental functionality.
+
 - `extract` : Copy per-song metadata into a standardised format across different datasets
 - `preproc` : Run any preprocessing e.g. source separation, voice activity detection
 - `infer` : Run lyrics transcription algorithm. Note that the function `get_speech_timestamps_rms`
