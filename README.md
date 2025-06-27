@@ -1,5 +1,5 @@
 # Source Separation for Lyrics Transcription
-This is the repo assosciated with the [paper](https://arxiv.org/TODO) "Exploiting Music Source Separation for 
+This is the repo assosciated with the [paper](https://arxiv.org/pdf/2506.15514) "Exploiting Music Source Separation for 
 Automatic Lyrics Transcription with Whisper" published at the ICME 2025 workshop "Artificial Intelligence for Music"
 (https://ai4musicians.org/2025icme.html)
 
