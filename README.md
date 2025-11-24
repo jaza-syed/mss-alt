@@ -20,9 +20,9 @@ to update dependencies.
 
 ## Datasets
 The main datasets used in this repo are available on huggingface:
-- `jam-alt` - https://huggingface.co/datasets/audioshake/jam-alt - tag `0e15962` 
-- `musdb-alt` - https://huggingface.co/datasets/audioshake/musdb-alt - tag `v1.1.0`
-  
+- `jam-alt` - https://huggingface.co/datasets/jamendolyrics/jam-alt - tag `0e15962`
+- `musdb-alt` - https://huggingface.co/datasets/jazasyed/musdb-alt - tag `v1.1.0`
+
 Note that Jam-ALT with non-lexical tags is currently only available on a [PR Branch](https://huggingface.co/datasets/jamendolyrics/jam-alt/tree/refs%2Fpr%2F8).
 
 There must be a copy of MUSDB available. By default, this is expected to be in
@@ -41,21 +41,33 @@ See the experimental [README](./expt/01-ss/README.md) for details on how to run 
 ## Structure
 The repo contains a python module `alt` in `src/alt` which provides all the experimental functionality.
 
+### Main pipeline modules:
 - `extract` : Copy per-song metadata into a standardised format across different datasets
-- `preproc` : Run any preprocessing e.g. source separation, voice activity detection
+- `separate` : Run source separation using Demucs models
 - `infer` : Run lyrics transcription algorithm. Note that the function `get_speech_timestamps_rms`
   corresponds to VAD step in the algorithm RMS-VAD defined in our paper.
 - `evaluate` : Evaluate results from infer stage against the ground truth
-The repo contains additional supporting modules:
+- `render` : Rendering evaluation results to HTML with audio playback
+
+### Supporting modules:
 - `alt_types` : dataclasses used throughout the module
 - `asr_pool` : pool class for running ASR on multiple GPUs
 - `demucs_pool` : pool class for running MSS on multiple GPUs
-- `render` : rendering evaluation results to HTML
 - `util` : filesystem and environment utilities
-- `merge` : functions to produce merged lines and groupe from line-level timings
-The following modules are adapted from the python package [alt-eval](https://github.com/audioshake/alt-eval)
+- `merge` : functions to produce merged lines and groups from line-level timings
+- `html_templates` : HTML templates for rendering results
+
+### Training modules:
+- `model` : Whisper model training with PyTorch Lightning
+- `data` : Data loading and preprocessing for model training
+- `create_data` : Convert songs to training records
+
+### Evaluation modules adapted from [alt-eval](https://github.com/audioshake/alt-eval):
 - `tokenizer`: lyric tokenizer
-- `metrics.py`: utilities to compute error metrics
-- `normalization.py`: lyric normalizer
+- `metrics`: utilities to compute error metrics
+- `normalization`: lyric normalizer
+
+### Utilities:
+- `convert_to_hf` : Convert Whisper models to HuggingFace format
 
 The folder `expt/` contains experimental code and analysis notebooks.
